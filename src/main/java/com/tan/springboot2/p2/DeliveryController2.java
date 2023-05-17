@@ -1,4 +1,4 @@
-package com.tan.springboot2.p1;
+package com.tan.springboot2.p2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/delivery")
+@RequestMapping("/delivery2")
 public class DeliveryController2 {
     private static final String DELIVERY_ORDER_ACCEPTED_KEY = "delivery_order_accepted";
 

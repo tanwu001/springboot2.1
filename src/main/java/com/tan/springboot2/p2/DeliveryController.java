@@ -1,4 +1,4 @@
-package com.tan.springboot2.p1;
+package com.tan.springboot2.p2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

@@ -14,22 +14,18 @@ public class OrderService {
 
     private static final String LOCK_KEY = "order-lock:";
 
-    private final RedissonClient redissonClient;
-
     @Autowired
-    public OrderService(RedissonClient redissonClient) {
-        this.redissonClient = redissonClient;
-    }
+    private RedissonClient redissonClient;
 
-    public boolean takeOrder(Integer id) {
-        RLock lock = redissonClient.getLock(LOCK_KEY + id);
+    public boolean takeOrder(Integer orderId) {
+        RLock lock = redissonClient.getLock(LOCK_KEY + orderId);
         try {
             // 尝试获取分布式锁，设置锁的过期时间，避免锁长时间占用
-            boolean locked = lock.tryLock(10, 600, TimeUnit.SECONDS);
+            boolean locked = lock.tryLock(10, 300, TimeUnit.SECONDS);
             if (locked) {
                 log.info("cg");
                 // 在这里实现接单逻辑
-                Thread.sleep(580 * 1000L);
+                Thread.sleep(280 * 1000L);
                 // ...
                 return true; // 接单成功
             } else {
